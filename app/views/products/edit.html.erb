@@ -1,0 +1,37 @@
+<div class="set_width">
+  <p>Edit product</p>
+  <select class="custom-select custom-select-lg mb-3">
+      <option selected>Category</option>
+      <option value="1">Toys</option>
+      <option value="2">Films</option>
+      <option value="3">Gadgets</option>
+  </select>
+
+  <%= form_with scope: :product, url: products_path, local: true do |form| %>
+    <p>
+      <%= form.label "#{:title}:" %><br>
+      <%= form.text_field :title, class: "set_width" %>
+    </p>
+
+    <p>
+      <%= form.label "#{:price} ($):" %><br>
+      <%= form.text_field :price, class: "set_width" %>
+    </p>
+
+    <p>
+      <%= form.label "Image url:" %><br>
+      <%= form.text_field :img_url, class: "set_width" %>
+    </p>
+
+    <p>
+      <%= form.label "#{:description}:" %><br>
+      <%= form.text_area :text %>
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+
+  <% end %>
+  <%= link_to 'Back', pages_index_path %>
+</div>

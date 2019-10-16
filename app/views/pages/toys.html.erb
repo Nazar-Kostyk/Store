@@ -1,0 +1,45 @@
+<!-- Page Content -->
+<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <h1 class="my-4">Categories</h1>
+        <div class="list-group">
+          <p class="list-group-item"><%= link_to 'Toys', pages_toys_path, class: "highlight" %></p>
+          <p class="list-group-item"><%= link_to 'Films', pages_films_path %></p>
+          <p class="list-group-item"><%= link_to 'Gadgets', pages_gadgets_path %></p>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="row">
+          <% 2.times do %>
+            <% @arr.each do |link_| %>
+              <div class="col-lg-4">
+                <div class="padd">
+                  <div class="card h-100">
+                    <img class="card-img-top" src=<%= link_ %> alt="">
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#">Mountains</a>
+                      </h4>
+                      <h5>$24.99</h5>
+                      <p class="card-text">Data about product.</p>
+                      <button type="button" class="btn btn-success">Buy</button>
+                      <button type="button" class="btn btn-warning">Edit</button>
+                      <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pad">
+  <button type="button" name="Previous" class="btn btn-outline-dark" >Previous</button>
+  <button type="button" name="Next" class="btn btn-outline-dark">Next</button>
+</div>
