@@ -24,9 +24,13 @@
                       </h4>
                       <h5>$24.99</h5>
                       <p class="card-text">Data about product.</p>
-                      <button type="button" class="btn btn-success">Buy</button>
-                      <button type="button" class="btn btn-warning">Edit</button>
-                      <button type="button" class="btn btn-danger">Delete</button>
+                      <% if signed_in? %>
+                        <button type="button" class="btn btn-success">Buy</button>
+                        <% if current_user.admin %>
+                          <button type="button" class="btn btn-warning">Edit</button>
+                          <button type="button" class="btn btn-danger">Delete</button>
+                        <% end %>
+                      <% end %>
                     </div>
                   </div>
                 </div>

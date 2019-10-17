@@ -10,9 +10,7 @@ class PagesController < ApplicationController
   end
 
   def toys
-    @arr = ["https://www.saporedicina.com/es/wp-content/uploads/2018/01/visita-monte-kailash-700x400.jpeg",
-           "https://ywammontana.org/ywammontana.org/watertower-content/uploads/2016/04/happy-700x400.jpeg",
-           "https://ywammontana.org/ywammontana.org/watertower-content/uploads/2016/05/doubt2-700x400.jpeg"]
+    @toys = Product.where(category: 'Toys').limit(6).offset(0)
   end
 
   def gadgets

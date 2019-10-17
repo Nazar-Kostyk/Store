@@ -1,0 +1,26 @@
+<%= form_with model: @product, local: true do |form| %>
+  <%= form.select(:category, options_for_select([['Toys', 'Toys'], ['Films', 'Films'], ['Gadgets', 'Gadgets']]), { }, { class: "custom-select custom-select-lg mb-3"} ) %>
+  <p>
+    <%= form.label "#{:title}:" %><br>
+    <%= form.text_field :title, class: "set_width" %>
+  </p>
+
+  <p>
+    <%= form.label "#{:price} ($):" %><br>
+    <%= form.text_field :price, class: "set_width" %>
+  </p>
+
+  <p>
+    <%= form.label "Image url:" %><br>
+    <%= form.text_field :img_url, class: "set_width" %>
+  </p>
+
+  <p>
+    <%= form.label "#{:description}:" %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.submit class: "btn btn-success" %> <%= link_to 'Back', pages_index_path, class: "btn btn-success" %>
+  </p>
+<% end %>
