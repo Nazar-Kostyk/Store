@@ -11,12 +11,14 @@
 
   <body>
 
+    <!--
     <% if signed_in? %>
          Signed in as: <%= current_user.email %>
          <%= button_to 'Sign out', sign_out_path, method: :delete %>
     <% else %>
          <%= link_to 'Sign in', sign_in_path %>
     <% end %>
+    -->
 
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -30,8 +32,7 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Bin
-                </a>
+                <span class="nav-link"><%= link_to 'Bin', pages_bin_path, class: "color_inherit"%></span>
               </li>
               <% if signed_in? %>
                 <% if current_user.admin %>
@@ -41,6 +42,9 @@
                 <% end %>
                 <li class="nav-item">
                   <span class="nav-link"><%= link_to "Sign out", sign_out_path, method: :delete, class: "color_inherit"%></span>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link"><%= link_to current_user.username, users_cabinet_path, class: "color_inherit"%></span>
                 </li>
               <% else %>
                 <li class="nav-item">

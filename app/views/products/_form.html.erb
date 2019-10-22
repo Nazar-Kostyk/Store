@@ -1,4 +1,18 @@
 <%= form_with model: @product, local: true do |form| %>
+  <% if @product.errors.any? %>
+    <div id="error_message_width" class="alert alert-danger">
+      <h2>
+        <%= pluralize(@product.errors.count, "error") %> prohibited
+        this product from being saved:
+      </h2>
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form.select(:category, options_for_select([['Toys', 'Toys'], ['Films', 'Films'], ['Gadgets', 'Gadgets']]), { }, { class: "custom-select custom-select-lg mb-3"} ) %>
   <p>
     <%= form.label "#{:title}:" %><br>

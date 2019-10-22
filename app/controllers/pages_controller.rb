@@ -4,23 +4,42 @@ class PagesController < ApplicationController
   end
 
   def films
-    @arr = ["https://www.saporedicina.com/es/wp-content/uploads/2018/01/visita-monte-kailash-700x400.jpeg",
-           "https://ywammontana.org/ywammontana.org/watertower-content/uploads/2016/04/happy-700x400.jpeg",
-           "https://ywammontana.org/ywammontana.org/watertower-content/uploads/2016/05/doubt2-700x400.jpeg"]
+    #byebug
+    films_count = Product.where(category: 'Films').count
+    if films_count % 6 == 0
+      @films_count = films_count / 6
+    else
+      @films_count = films_count / 6 + 1
+    end
+    @films = Product.where(category: 'Films').limit(6).offset(params[:skip])
   end
 
   def toys
-    @toys = Product.where(category: 'Toys').limit(6).offset(0)
+    if Product.where(category: 'Toys').count % 6 == 0
+      @toys_count = Product.where(category: 'Toys').count / 6
+    else
+      @toys_count = Product.where(category: 'Toys').count / 6 + 1
+    end
+    @toys = Product.where(category: 'Toys').limit(6).offset(params[:skip])
   end
 
   def gadgets
-    @arr = ["https://www.saporedicina.com/es/wp-content/uploads/2018/01/visita-monte-kailash-700x400.jpeg",
-           "https://ywammontana.org/ywammontana.org/watertower-content/uploads/2016/04/happy-700x400.jpeg",
-           "https://ywammontana.org/ywammontana.org/watertower-content/uploads/2016/05/doubt2-700x400.jpeg"]
+    if Product.where(category: 'Gadgets').count % 6 == 0
+      @gadgets_count = Product.where(category: 'Gadgets').count / 6
+    else
+      @gadgets_count = Product.where(category: 'Gadgets').count / 6 + 1
+    end
+    @gadgets = Product.where(category: 'Gadgets').limit(6).offset(params[:skip])
   end
 
-  def new
+  def bin
+    user_products = Order.where(user_id: current_user.id)
 
+    products_ids = user_products.map do |product|
+      product.product_id
+    end
+
+    @products = Product.where(id: products_ids)
   end
 
 end

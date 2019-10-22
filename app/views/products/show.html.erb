@@ -1,0 +1,22 @@
+<div class="set_width" id="width_">
+  <div class="card h-100">
+    <img class="card-img-top" height="300" width="100"  alt="Toy image was't found" src=<%= @product.img_url %>>
+    <div class="card-body">
+      <h5 class="card-title">
+        <a href="#"><%= @product.title %></a>
+      </h5>
+      <h5>$<%= @product.price %></h5>
+      <p class="card-text"><%= @product.description %></p>
+      <% if signed_in? %>
+        <button type="button" class="btn btn-success">Buy</button>
+        <% if current_user.admin %>
+          <button type="button" class="btn btn-warning" ><%= link_to 'Edit', edit_product_path(@product), class: "color_inherit" %></button>
+          <button type="button" class="btn btn-danger"><%= link_to 'Destroy', product_path(@product),
+                                                           method: :delete,
+                                                           data: { confirm: 'Are you sure?' },
+                                                           class: "color_inherit" %></button>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

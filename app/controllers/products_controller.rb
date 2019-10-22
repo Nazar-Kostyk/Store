@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+  def show
+    @product = Product.find(params[:id])
+  end
+
 
   def new
     @product = Product.new
@@ -31,7 +35,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-   
+
     redirect_to pages_index_path
   end
 
@@ -39,5 +43,4 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:title, :description, :price, :img_url, :category)
   end
-
 end

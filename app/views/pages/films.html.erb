@@ -12,30 +12,31 @@
       </div>
       <div class="col-lg-9">
         <div class="row">
-          <% 2.times do %>
-            <% @arr.each do |link_| %>
-              <div class="col-lg-4">
-                <div class="padd">
-                  <div class="card h-100">
-                    <img class="card-img-top" src=<%= link_ %> alt="">
-                    <div class="card-body">
-                      <h4 class="card-title">
-                        <a href="#">Mountains</a>
-                      </h4>
-                      <h5>$24.99</h5>
-                      <p class="card-text">Data about product.</p>
-                      <% if signed_in? %>
-                        <button type="button" class="btn btn-success">Buy</button>
-                        <% if current_user.admin %>
-                          <button type="button" class="btn btn-warning">Edit</button>
-                          <button type="button" class="btn btn-danger">Delete</button>
-                        <% end %>
+          <% @films.each do |film| %>
+            <div class="col-lg-4">
+              <div class="padd">
+                <div class="card h-100">
+                  <img class="card-img-top" height="300" width="100" alt="Gadget image was't found" src=<%= film.img_url %>>
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <span><%= link_to film.title, product_path(film) %></span>
+                    </h5>
+                    <h5>$<%= film.price %></h5>
+                    <p id="overflow_ellipsis" class="card-text"><%= film.description %></p>
+                    <% if signed_in? %>
+                      <button type="button" class="btn btn-success"><%= link_to 'Buy', orders_path({ order: { user_id: current_user.id, product_id: film.id } }), remote: true, method: :post, class: "color_inherit" %></button>
+                      <% if current_user.admin %>
+                        <button type="button" class="btn btn-warning" ><%= link_to 'Edit', edit_product_path(film), class: "color_inherit" %></button>
+                        <button type="button" class="btn btn-danger"><%= link_to 'Destroy', product_path(film),
+                                                                         method: :delete,
+                                                                         data: { confirm: 'Are you sure?' },
+                                                                         class: "color_inherit" %></button>
                       <% end %>
-                    </div>
+                    <% end %>
                   </div>
                 </div>
               </div>
-            <% end %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -44,6 +45,8 @@
 </div>
 
 <div class="pad">
-  <button type="button" name="Previous" class="btn btn-outline-dark" >Previous</button>
-  <button type="button" name="Next" class="btn btn-outline-dark">Next</button>
+  <% @films_count.times do |i| %>
+    <button type="button" class="btn btn-outline-dark" ><%= link_to (i+1).to_s, pages_films_path(skip: i*6), class: "color_inherit" %></button>
+    <!--<button type="button" ><%= link_to (i+1).to_s, pages_films_path(skip: i*6)%></button>-->
+  <% end %>
 </div>

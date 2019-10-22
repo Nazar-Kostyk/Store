@@ -48,7 +48,24 @@
  }
 
  .set_width {
+   margin-top: 5px;
    width: 210px;
    margin-left: auto;
    margin-right: auto;
+ }
+
+ #overflow_ellipsis {
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
+ }
+
+ #width_ {
+   width: 250px;
+ }
+
+ #error_message_width {
+   width: 750px;
+   position: relative;
+   right: 225px;
  }
