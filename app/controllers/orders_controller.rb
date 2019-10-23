@@ -19,8 +19,17 @@ class OrdersController < ApplicationController
     end
   end
 
-  def show_all
-    @orders = Order.all
+  def destroy
+    @order = Order.where(product_id: params[:id])
+    @order.destroy_all
+
+    redirect_to pages_bin_path
+  end
+
+  def delete_all
+    Order.find_each(&:destroy)
+
+    redirect_to pages_bin_path
   end
 
   private

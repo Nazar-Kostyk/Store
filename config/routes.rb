@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   get 'pages/new'
   get 'pages/bin'
 
+  get 'orders/delete_all'
   resources :orders
-  get 'orders/show_all'
 
   resources :products
   # resources :pages

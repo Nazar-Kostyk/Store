@@ -54,6 +54,20 @@
    margin-right: auto;
  }
 
+ .set_width_horizontal {
+   margin-top: 5px;
+   width: 450px;
+   margin-left: auto;
+   margin-right: auto;
+ }
+
+ #top_right_button {
+   font-size: 10px;
+   position: relative;
+   right: -415px;
+   top: -180px;
+ }
+
  #overflow_ellipsis {
    text-overflow: ellipsis;
    white-space: nowrap;

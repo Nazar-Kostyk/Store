@@ -1,3 +1,27 @@
-<% @products.each do |product| %>
-  <p><%= product.title %>, <%= product.price %></p>
-<% end %>
+<div class="set_width_horizontal">
+  <% @products.each do |product| %>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src=<%= product.img_url %> class="card-img" alt="Not fond">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= product.title %></h5>
+            <p class="card-text"><%= product.description %></p>
+            <h4 class="card-text"><small class="text-muted"><%= product.price %>$</small></h4>
+          </div>
+        </div>
+        <button type="button" name="button" class="btn" id="top_right_button"><%= link_to 'X', order_path(product), method: :delete, class: "color_inherit" %></button>
+      </div>
+    </div>
+  <% end %>
+  <% if @sum != 0 %>
+    <p>
+      <%= link_to "Confirm order (#{@sum}$)", pages_index_path, class: "btn btn-success" %>
+      <%= link_to 'Clear bin', orders_delete_all_path, class: "btn btn-success" %>
+    </p>
+  <% else %>
+    <p>Your bin is empty</p>
+  <% end %>
+</div>

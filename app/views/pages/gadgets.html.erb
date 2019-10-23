@@ -24,7 +24,7 @@
                     <h5>$<%= gadget.price %></h5>
                     <p id="overflow_ellipsis" class="card-text"><%= gadget.description %></p>
                     <% if signed_in? %>
-                      <button type="button" class="btn btn-success">Buy</button>
+                      <button type="button" class="btn btn-success"><%= link_to 'Buy', orders_path({ order: { user_id: current_user.id, product_id: gadget.id } }), remote: true, method: :post, class: "color_inherit" %></button>
                       <% if current_user.admin %>
                         <button type="button" class="btn btn-warning" ><%= link_to 'Edit', edit_product_path(gadget), class: "color_inherit" %></button>
                         <button type="button" class="btn btn-danger"><%= link_to 'Destroy', product_path(gadget),
@@ -46,6 +46,6 @@
 
 <div class="pad">
   <% @gadgets_count.times do |i| %>
-    <button type="button" class="btn btn-outline-dark" ><%= link_to eval((i+1).to_s), pages_gadgets_path(skip: i*6), class: "color_inherit" %></button>
+    <button type="button" class="btn btn-outline-dark" ><%= link_to (i+1).to_s, pages_gadgets_path(skip: i*6), class: "color_inherit" %></button>
   <% end %>
 </div>

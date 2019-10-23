@@ -39,7 +39,12 @@ class PagesController < ApplicationController
       product.product_id
     end
 
-    @products = Product.where(id: products_ids)
+    @products = []
+    products_ids.each { |_id| @products.push(Product.find_by(id: _id)) }
+    # @products = Product.where(id: products_ids)
+    # byebug
+    @sum = 0
+    @products.each { |product| @sum += product.price }
   end
 
 end
