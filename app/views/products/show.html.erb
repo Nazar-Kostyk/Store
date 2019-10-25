@@ -8,7 +8,7 @@
       <h5>$<%= @product.price %></h5>
       <p class="card-text"><%= @product.description %></p>
       <% if signed_in? %>
-        <button type="button" class="btn btn-success">Buy</button>
+        <button type="button" class="btn btn-success"><%= link_to 'Buy', orders_path({ order: { user_id: current_user.id, product_id: @product.id } }), remote: true, method: :post, class: "color_inherit" %></button>
         <% if current_user.admin %>
           <button type="button" class="btn btn-warning" ><%= link_to 'Edit', edit_product_path(@product), class: "color_inherit" %></button>
           <button type="button" class="btn btn-danger"><%= link_to 'Destroy', product_path(@product),

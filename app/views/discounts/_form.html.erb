@@ -1,0 +1,11 @@
+<%= form_with model: @discount, local: true do |form| %>
+  <%= form.select(:category, options_for_select([['Toys', 'Toys'], ['Films', 'Films'], ['Gadgets', 'Gadgets']]), { }, { class: "custom-select custom-select-lg mb-3"} ) %>
+  <p>
+    <%= form.label "#{:percents} (%):" %><br>
+    <%= form.text_field :percents, class: "set_width" %>
+  </p>
+
+  <p>
+    <%= form.submit class: "btn btn-success" %> <%= link_to 'Back', discounts_discounts_path, class: "btn btn-success" %>
+  </p>
+<% end %>

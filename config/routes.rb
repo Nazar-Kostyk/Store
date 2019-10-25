@@ -20,12 +20,20 @@ Rails.application.routes.draw do
   get 'pages/gadgets'
   get 'pages/new'
   get 'pages/bin'
+  get 'pages/discounts'
 
   get 'orders/delete_all'
   resources :orders
 
   resources :products
   # resources :pages
+
+  get 'orders_histories/show_all'
+  resources :orders_histories
+
+  get 'discounts/discounts'
+  get 'discounts/change'
+  resources :discounts
 
   root 'pages#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

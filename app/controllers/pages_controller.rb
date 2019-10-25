@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :require_login, :except => [:index, :films, :toys, :gadgets]
   def index
 
   end
@@ -35,12 +36,12 @@ class PagesController < ApplicationController
   def bin
     user_products = Order.where(user_id: current_user.id)
 
-    products_ids = user_products.map do |product|
+    @products_ids = user_products.map do |product|
       product.product_id
     end
 
     @products = []
-    products_ids.each { |_id| @products.push(Product.find_by(id: _id)) }
+    @products_ids.each { |_id| @products.push(Product.find_by(id: _id)) }
     # @products = Product.where(id: products_ids)
     # byebug
     @sum = 0

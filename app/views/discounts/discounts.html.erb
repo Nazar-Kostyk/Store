@@ -1,0 +1,17 @@
+<div class="set_width_horizontal">
+  <h3>Current discounts:</h3>
+  <% if @discounts.first == nil %>
+    <p>There are no discounts at the moment</p>
+  <% else %>
+    <ul>
+    <% @discounts.each do |discount| %>
+      <li><%= discount.category %>: <%= discount.percents %>%    <% if current_user.admin %>     <%= link_to "x", discount_path(discount), method: :delete %> <% end %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <% if current_user.admin %>
+    <div style="padding-bottom:10px;">
+      <button type="button" class="btn btn-success"><%= link_to 'Add', new_discount_path, class: "color_inherit" %></button>
+    </div>
+  <% end %>
+</div>

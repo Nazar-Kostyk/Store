@@ -1,1 +1,17 @@
-<p> <%= @user.username %> </p>
+<div class="set_width_horizontal">
+  <% @ids.each do |key| %>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="https://thumbs.dreamstime.com/z/order-red-stamp-text-white-44561786.jpg" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to "##{key.order_key}"%>   <%= "#{@prices[key.order_key]}$" %></h5>
+            <p class="card-text"><small class="text-muted"><%= @orders.where(order_key: key.order_key).first.created_at.localtime %></small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

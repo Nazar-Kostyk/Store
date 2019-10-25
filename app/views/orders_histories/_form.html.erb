@@ -1,0 +1,16 @@
+<%= form_with model: OrdersHistory, local: true do |form| %>
+  <p>
+    <%= form.label "Name:" %><br>
+    <%= form.text_field class: "set_width" %>
+  </p>
+
+  <p>
+    <%= form.label "Surname:" %><br>
+    <%= form.text_field class: "set_width" %>
+  </p>
+
+  <p>
+    <%= form.label "Phone number:" %><br>
+    <%= form.text_field class: "set_width" %>
+  </p>
+<% end %>

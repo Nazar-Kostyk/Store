@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_201840) do
+ActiveRecord::Schema.define(version: 2019_10_25_005519) do
+
+  create_table "discounts", force: :cascade do |t|
+    t.string "category"
+    t.float "percents"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "orders", force: :cascade do |t|
     t.integer "product_id"
@@ -18,6 +25,14 @@ ActiveRecord::Schema.define(version: 2019_10_22_201840) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+  end
+
+  create_table "orders_histories", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "order_key"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -28,9 +43,21 @@ ActiveRecord::Schema.define(version: 2019_10_22_201840) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "img_url"
     t.string "category"
+    t.float "saved_price"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'bool' for column 'admin'
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "email", null: false
+    t.string "encrypted_password", limit: 128, null: false
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128, null: false
+    t.boolean "admin"
+    t.string "username"
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["remember_token"], name: "index_users_on_remember_token"
+    t.index ["username"], name: "index_users_on_username", unique: true
+  end
 
 end

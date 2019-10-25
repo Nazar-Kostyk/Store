@@ -1,0 +1,7 @@
+<div class="set_width">
+  <%= render 'form' %>
+  <p>
+    <%= link_to "Purchase", orders_histories_path(), method: :post, class: "btn btn-success" %> <%= link_to 'Decline', pages_bin_path, class: "btn btn-danger" %>
+  </p>
+</div>
+<!-- { orders_history: { user_id: @orders_history[:user_id], order_id: @orders_history.[:order_id], products_ids: @orders_history[:products_ids] } } -->

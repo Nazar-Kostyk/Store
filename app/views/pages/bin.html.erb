@@ -18,7 +18,7 @@
   <% end %>
   <% if @sum != 0 %>
     <p>
-      <%= link_to "Confirm order (#{@sum}$)", pages_index_path, class: "btn btn-success" %>
+      <%= link_to "Confirm order (#{@sum}$)", orders_histories_path({ orders_history: { user_id: current_user.id, order_key: rand(1000...5000).to_s, product_id: @products_ids } }), method: :post, class: "btn btn-success" %>
       <%= link_to 'Clear bin', orders_delete_all_path, class: "btn btn-success" %>
     </p>
   <% else %>
