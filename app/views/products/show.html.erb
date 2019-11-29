@@ -1,7 +1,7 @@
 <div class="set_width" id="width_">
   <div class="card h-100">
     <img class="card-img-top" height="300" width="100"  alt="Toy image was't found" src=<%= @product.img_url %>>
-    <div class="card-body">
+    <div id="card-body" class="card-body">
       <h5 class="card-title">
         <a href="#"><%= @product.title %></a>
       </h5>
@@ -17,6 +17,7 @@
                                                            class: "color_inherit" %></button>
         <% end %>
       <% end %>
+      <div id="comments"><%= link_to "Comments", product_path(@product), remote: true  %></div>
     </div>
   </div>
 </div>

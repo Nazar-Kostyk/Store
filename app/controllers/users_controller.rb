@@ -1,4 +1,5 @@
 class UsersController < Clearance::UsersController
+  before_action :require_login
 
   def cabinet
     @user = current_user

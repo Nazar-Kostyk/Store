@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'pages/new'
   get 'pages/bin'
   get 'pages/discounts'
+  get 'pages/mail'
+  put 'pages/send_mail'
 
   get 'orders/delete_all'
   resources :orders
@@ -34,6 +36,8 @@ Rails.application.routes.draw do
   get 'discounts/discounts'
   get 'discounts/change'
   resources :discounts
+
+  resources :comments
 
   root 'pages#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

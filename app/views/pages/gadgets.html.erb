@@ -21,7 +21,7 @@
                     <h5 class="card-title">
                       <span><%= link_to gadget.title, product_path(gadget) %></span>
                     </h5>
-                    <h5>$<%= gadget.price %></h5>
+                    <h5>$<%= '%.2f' % gadget.price %> <% if Discount.where(category: 'Gadgets').first != nil %> <s style="color:red;">$<%= '%.2f' % gadget.saved_price %></s><% end %></h5>
                     <p id="overflow_ellipsis" class="card-text"><%= gadget.description %></p>
                     <% if signed_in? %>
                       <button type="button" class="btn btn-success"><%= link_to 'Buy', orders_path({ order: { user_id: current_user.id, product_id: gadget.id } }), remote: true, method: :post, class: "color_inherit" %></button>

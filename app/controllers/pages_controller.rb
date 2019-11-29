@@ -48,4 +48,16 @@ class PagesController < ApplicationController
     @products.each { |product| @sum += product.price }
   end
 
+  def mail
+  end
+
+  def send_mail
+    @users = User.all
+    @users.each do |usr|
+      if !usr.admin
+        UserMailer.with(user: usr, text: params[:text]).send_email.deliver_now
+      end
+    end
+  end
+
 end

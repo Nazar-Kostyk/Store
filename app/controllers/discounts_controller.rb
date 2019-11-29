@@ -1,4 +1,6 @@
 class DiscountsController < ApplicationController
+  before_action :require_login, :except => [:discounts]
+
   def new
     @discount = Discount.new
   end

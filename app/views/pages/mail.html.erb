@@ -1,0 +1,8 @@
+<div class="set_width">
+  <%= form_tag(pages_send_mail_path, :method => "put") do %>
+    <%= label_tag(:text, "Create your email:") %>
+    <%= text_area_tag(:text, "", :size => "30x10") %>
+    <%= submit_tag("Send", :class=>"btn btn-success") %> <%= link_to 'Back', pages_index_path, class: "btn btn-success" %>
+  <% end %>
+  <p></p>
+</div>

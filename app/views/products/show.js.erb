@@ -1,0 +1,33 @@
+var element = document.getElementById("comments");
+console.log(element);
+// element.style.visibility = "hidden"
+element.firstElementChild.dataset["remote"] = false
+
+<% comments = Comment.where(id_product: params[:id]).limit(6)%>
+<% if comments.length != 0 %>
+  <% comments.each do |comment| %>
+    var para = document.createElement("p");
+    var user = document.createTextNode("<%= User.find(comment.id_user).username %>:");
+    para.appendChild(user);
+    para.appendChild(document.createElement("br"));
+    var text = document.createTextNode("<%= comment.text %>");
+    para.appendChild(text);
+    element.appendChild(para);
+  <% end %>
+<% else %>
+  var para = document.createElement("p");
+  var text = document.createTextNode("No comments yet.");
+  para.appendChild(text);
+  element.appendChild(para);
+<% end %>
+
+var element2 = document.getElementById("card-body");
+var addCommentButton = document.createElement("button");
+addCommentButton.innerHTML = "Add comment";
+
+addCommentButton.addEventListener("click", function(){
+    document.location.href = "<%= comments_path %>";
+});
+
+
+element2.appendChild(addCommentButton);
