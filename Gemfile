@@ -64,5 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
   # Adds support for Capybara system testing and selenium driver
-  gem 'pg', '0.17.1'
+  gem 'pg', '0.18.4'
 end
